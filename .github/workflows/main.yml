@@ -22,8 +22,8 @@ jobs:
         r-version: [3.5, 3.6]
 
     steps:
-      - uses: actions/checkout@v2
       - name: ACTIONS_ALLOW_UNSECURE_COMMANDS
+        uses: actions/checkout@v2
         env: 
           ACTIONS_ALLOW_UNSECURE_COMMANDS: TRUE
       - name: Set up R ${{ matrix.r-version }}
