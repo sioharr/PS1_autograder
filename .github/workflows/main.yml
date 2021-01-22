@@ -21,11 +21,15 @@ jobs:
       matrix:
         r-version: [3.5, 3.6]
 
+
+
+
     steps:
       - name: ACTIONS_ALLOW_UNSECURE_COMMANDS
         uses: actions/checkout@v2
-        env: 
-          ACTIONS_ALLOW_UNSECURE_COMMANDS: TRUE
+        run: |
+          echo "PR_AUTHOR=${{ github.event.pull_request.user.login }}" >> $GITHUB_ENV
+          echo "PR_AUTHOR=${{ github.event.issue.user.login }}" >> $GITHUB_ENV
       - name: Set up R ${{ matrix.r-version }}
         uses: r-lib/actions/setup-r@ffe45a39586f073cc2e9af79c4ba563b657dc6e3
         with:
